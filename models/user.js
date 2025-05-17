@@ -16,6 +16,21 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  location:{
+    type:String,
+    required: true,
+  },
+  about:{
+    type:String,
+    required: false,
+  },
+  profileImg:{
+    type:String,
+    required:false
+  },
+  role:{
+    enum:["owner","applicant","both"]
+  }
 }, {
   // Mongoose will maintain a createdAt & updatedAt property
   timestamps: true
