@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/main.css">
-  <title>Express Starter</title>
+  <title><%= pageTitle || "" %></title>
 </head>
 <body>
   <nav>
     <a href="/">🏠</a>
     <div>
-      <a href="/pets">VIEW PETS</a>
       <% if (user) { %>
+        <span>Welcome, <%= user.name %></span>
         <a href="/pets">VIEW PETS</a>
         <a href="/pets/new">ADD YOUR PET</a>
         <a href="/auth/sign-out">SIGN OUT</a>
-        <span><%= user.name %></span>
+        
       <% } else { %>
+        <a href="/pets">VIEW PETS</a>
         <a href="/auth/sign-up">SIGN UP</a>
         <a href="/auth/sign-in">SIGN IN</a>
       <% } %>

@@ -1,0 +1,24 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Available pets</h1>
+<% if(pets && pets.length){ %>
+<%pets.forEach((pet)=>{%>
+    <div class="pet-div">
+<img alt="image of <%=pet.name%>" class="pet-pic" src="<%=pet.profileImg%>">
+<p class="pet-name"><%=pet.name%></p>
+<p class="pet-species"><%=pet.species%></p>
+<%if (pet.breed){%>
+<p class="pet-breed"><%=pet.breed%></p>
+<%}%>
+<p class="pet-location"><%=pet.location%></p>
+<a href="/pets/<%=pet._id%>">View more</a> 
+</div>
+<% } )} else { %>
+<p> No pets available!</p>
+    <% } %>
+
+<!-- make whole div clickable link -->
+ <!-- add filtering option -->
+
+
+ <%- include('../partials/footer.ejs') %>

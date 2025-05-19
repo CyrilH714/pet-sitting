@@ -7,7 +7,4 @@ const ensureLoggedIn = require('../middleware/ensure-logged-in');
 
 
 router.use(ensureLoggedIn);
-
-
-
 module.exports = router;

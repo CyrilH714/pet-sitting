@@ -5,14 +5,25 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const commentSchema= new Schema ({})
 const petSchema = new Schema({
   
-  name: {
-    type: String
+  about:{
+    type:String,
+    required:true
   },
-  type: {
+
+  name: {
     type: String,
+  },
+  category: {
+    type:String,
+    enum: ["Dog","Cat","Other small mammal","Other large mammal","Lizard","Snake","Other reptile","Fish","Bird","Insect/Arachnid","Other"],
     required: true,
+  },
+  breed: {
+    type:String,
+    required: false,
   },
   age: {
     type: Number,
@@ -36,13 +47,23 @@ const petSchema = new Schema({
   },
   owner:{
     type:mongoose.Schema.Types.ObjectId,
-    ref:"User",
+    ref:"User"
+  },
+
+  date:{
+    type:Date,
     required:true,
   },
 
     comments:{
-        type:[commentsSchema],
+        type:[commentSchema],
     },
+
+    application:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"Application",
+      required:false
+    }
   
 }, {
   // Mongoose will maintain a createdAt & updatedAt property

@@ -18,7 +18,7 @@ const userSchema = new Schema({
   },
   location:{
     type:String,
-    required: true,
+    required: false,
   },
   about:{
     type:String,
@@ -29,6 +29,7 @@ const userSchema = new Schema({
     required:false
   },
   role:{
+    type:String,
     enum:["owner","applicant","both"]
   }
 }, {

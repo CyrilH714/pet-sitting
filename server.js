@@ -9,6 +9,7 @@ const methodOverride = require("method-override");
 const morgan = require("morgan");
 const session = require('express-session');
 
+
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT || 3000;
 
@@ -39,24 +40,36 @@ app.use(session({
   saveUninitialized: true
 }));
 
-// If a user is logged in, add the user's doc to req.user and res.locals.user
-app.use(require('./middleware/add-user-to-req-and-locals'));
+// middleware
+const ensureLoggedIn=require("./middleware/ensure-logged-in.js");
+const passUserToView=require('./middleware/add-user-to-req-and-locals.js');
 
 
 // Routes below
 
 // GET / (root/default) -> Home Page
 app.get('/', (req, res) => {
-  res.render('home.ejs');
+  try{
+    res.redirect("/pets", {user: req.session.user, pageTitle: "View pets"});
+  }catch(err){
+    console.log(err);
+  res.render('home.ejs', {
+    user: req.session.user, pageTitle: "Home"
+  });}
 });
 
 // The '/auth' is the "starts with" path.  The
 // paths defined in the router/controller will be
 // appended to the "starts with" path
+app.use(passUserToView);
 app.use('/auth', require('./controllers/auth'));
-
 // Update the pets data resource with your "main" resource
 app.use('/pets', require('./controllers/pets'));
+app.use(ensureLoggedIn);
+app.use('/applications', require('./controllers/applications'));
+app.use('/users', require('./controllers/users'));
+
+
 
 
 app.listen(port, () => {

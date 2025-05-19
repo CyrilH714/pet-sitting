@@ -22,6 +22,7 @@ const applicationSchema = new Schema({
     required: true,
   },
   status:{
+    type:String,
     enum:["pending","accepted","declined"],
     required: true,
   },

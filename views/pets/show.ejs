@@ -1,0 +1,31 @@
+<!-- if user, allow edit/delete -->
+ <%- include('../partials/header.ejs') %>
+    <h1><%=pet.name%></h1>
+    <img alt="image of <%=pet.name%>" class="pet-pic" src="<%=pet.profileImg%>">
+    <p class="pet-species"><%=pet.species%></p>
+    <% if(pet.breed){ %>
+    <p> <%=pet.breed %></p>
+    <% } %>
+    <p class="pet-location"><%=pet.location%></p>
+    <%if (pet.age===1){%>
+<p class="pet-age"><%=pet.age%> year old</p>
+<%} else {%>
+<p class="pet-age"><%=pet.age%> years old</p>
+<%}%>
+     <% if(pet.specialCareNeeded){ %>
+    <p> Special care needed! ⭐️</p>
+    <% } %>
+    <%if (pet.about){%>
+<p class="pet-about">About <%=pet.name%>: <br><%=pet.about%></p>
+<%}%>
+
+<%if (pet.owner===user._id){%>
+    <form action="/pets/<%=pet._id%>?_method=DELETE" method="POST">
+        <a href="/pets/<%=pet._id%>/edit">Edit details</a>
+            <button type="submit">Remove pet</button>
+        </form>
+        <%}%>
+    <p><a href="/pets"> Go back</a></p>
+ 
+<%- include('../partials/footer.ejs') %>
+

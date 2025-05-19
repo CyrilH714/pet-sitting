@@ -10,7 +10,7 @@ const SALT_ROUNDS = 6;
 // Sign Up Form
 // GET /auth/sign-up
 router.get('/sign-up', (req, res) => {
-  res.render('auth/sign-up.ejs', { error: '' });
+  res.render('auth/sign-up.ejs', { error: '' , pageTitle: "Sign up"});
 });
 
 // POST /auth/sign-up
@@ -25,14 +25,14 @@ router.post('/sign-up', async (req, res) => {
     // This code will execute if an error happens
     // in the try block above
     if (err.message.includes('duplicate key')) err.message = 'User Already Exists';
-    res.render('auth/sign-up.ejs', { error: err.message });
+    res.render('auth/sign-up.ejs',{ error: err.message ,pageTitle: "Sign up"});
   }
 });
 
 // Return Sign In Form
 // GET /auth/sign-in 
 router.get('/sign-in', (req, res) => {
-  res.render('auth/sign-in.ejs', { error: '' });
+  res.render('auth/sign-in.ejs', { error: '',pageTitle: "Sign in" });
 });
 
 // POST /auth/sign-in
@@ -44,9 +44,9 @@ router.post('/sign-in', async (req, res) => {
     if (!isValidPassword) throw new Error();
     req.session.userId = user._id;
     // TODO: Redirect to what you want in your app
-    res.redirect('/pets/index');
+    res.redirect('/pets');
   } catch {
-    res.render('auth/sign-in.ejs', { error: 'Invalid Credentials' });
+    res.render('auth/sign-in.ejs',{ error: 'Invalid Credentials',pageTitle: "Sign in" });
   }
 });
 

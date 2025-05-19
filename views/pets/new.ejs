@@ -1,11 +1,10 @@
 <%- include('../partials/header.ejs') %>
-<%- include('../partials/header.ejs') %>
-<h1>Edit pet information</h1> 
-<form action="/pets/<%=pet._id%>?_method=PUT" method="POST">
+<h1>Submit your pet</h1> 
+<form action="/pets" method="POST">
     <label for="name">pet name:</label>
-    <input type="text" name="name" id="name" required value="<%=pet.name%>"/>
+    <input type="text" name="name" id="name" required/>
     <label for="category">Which category does your pet belong to?</label>
-     <select name="category" id="category" required >
+     <select name="category" id="category" required>
 
         <option name="Dog" id="Dog" value="Dog" <%= pet.category === "Dog" ? "selected" : "" %>>Dog</option>
         <option name='Cat' id="Cat" value="Cat" <%= pet.category === "cat" ? "selected" : "" %>>Cat</option>
@@ -21,31 +20,24 @@
         </select>
 
      <label for="breed">breed:</label>
-     <input type="text" name="breed" id="breed" value="<%=pet.breed%>"/>
+     <input type="text" name="breed" id="breed"/>
 
      <label for="age">age:</label>
-     <input type="number" name="age" id="age" value="<%=pet.age%>"/>
+     <input type="number" name="age" id="age"/>
 
      <label for="profileImg">Image URL of your pet:</label>
-     <input type="text" name="profileImg" id="profileImg" value="<%=pet.profileImg%>"/>
+     <input type="text" name="profileImg" id="profileImg"/>
 
      <label for="location">location:</label>
-     <input type="text" name="location" id="location" value="<%=pet.location%>"/>
+     <input type="text" name="location" id="location"/>
 
      <label for="date">Date pet-sitter needed:</label>
-     <input type="date" name="date" id="date" value="<%=pet.date.toISOString().split('T')[0]%>"/>
+     <input type="date" name="date" id="date"/>
 
-        <label for="specialCareNeeded"> Special requirements?</label>
-    <input type="checkbox" name="specialCareNeeded" id="specialCareNeeded"
-    <% if (pet.specialCareNeeded) { %> checked <% } %> /><br>
+    <input type="checkbox" name="specialCareNeeded" id="specialCareNeeded">
+    <label for="specialCareNeeded"> Special requirements?</label><br>
 <p>Please provide a description of your pet, including any special requirements or useful information</textarea>    Please provide a description of your pet, including any special requirements or useful information</p>
-      <textarea id="about" name="about" required rows="4"> <%=pet.about%>"</textarea> 
-      <button type="submit">Save changes</button>
+      <textarea id="about" name="about" required rows="4"></textarea> 
+      <button type="submit">Submit pet</button>
       </form>
-      <form action="/pets/<%=pet._id%>?_method=DELETE" method="POST">
-            <button type="submit">Remove pet</button>
-        </form>
 <%- include('../partials/footer.ejs') %>
-<%- include('../partials/footer.ejs') %>
-
-
