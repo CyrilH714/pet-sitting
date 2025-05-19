@@ -39,10 +39,10 @@
     <input type="checkbox" name="specialCareNeeded" id="specialCareNeeded"
     <% if (pet.specialCareNeeded) { %> checked <% } %> /><br>
 <p>Please provide a description of your pet, including any special requirements or useful information</textarea>    Please provide a description of your pet, including any special requirements or useful information</p>
-      <textarea id="about" name="about" required rows="4"> <%=pet.about%>"</textarea> 
+      <textarea id="about" name="about" required rows="4"> <%=pet.about%></textarea> 
       <button type="submit">Save changes</button>
       </form>
-      <form action="/pets/<%=pet._id%>?_method=DELETE" method="POST">
+      <form action="/pets/<%=pet._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this pet?');">
             <button type="submit">Remove pet</button>
         </form>
 <%- include('../partials/footer.ejs') %>

@@ -24,8 +24,11 @@ router.get('/', async (req, res) => {
 // GET /pets/new
 // Example of a protected route
 router.get('/new', ensureLoggedIn, (req, res) => {
-  res.render('pets/new.ejs', { pageTitle:"Submit a pet"});
-});
+  if (!req.session.userId){
+        return res.redirect("/auth/sign-in");
+      } else {
+  res.render('pets/new.ejs', { pet:{}, pageTitle:"Submit a pet"});
+}});
 
 // Create route: POST add item
 router.post("/", async(req,res)=>{
@@ -43,11 +46,13 @@ router.post("/", async(req,res)=>{
 // delete
 router.delete("/:id", async (req,res)=>{
     try{
-      if (pet.owner.toString() !== req.session.userId) {
-      return res.send("Not authorized");}
+if (!req.session.userId){
+        return res.redirect("/auth/sign-in");
+      } else {
         await Pet.findByIdAndDelete(req.params.id);
         res.redirect("/pets");
-    } catch (err){
+    }
+  } catch (err){
         console.log(err);
         res.redirect("/pets");
     }
@@ -55,11 +60,15 @@ router.delete("/:id", async (req,res)=>{
 // edit
 router.get("/:id/edit", async (req,res)=>{
     try{
-         pet= await Pet.findById(req.params.id).populate("owner");
+            if (!req.session.userId){
+        return res.redirect("/auth/sign-in");
+      } else {
+        const pet= await Pet.findById(req.params.id).populate("owner");
         pet.owner=req.session.userId;
  const user= await User.findById(req.session.userId);
         res.render("pets/edit.ejs",{pet, user, pageTitle:`Edit ${pet.name} `})
-    } catch(err) {
+    }
+  } catch(err) {
         console.log(err);
         res.redirect("/pets");
     }
@@ -85,13 +94,9 @@ router.put("/:id", async (req,res)=>{
 // show
 router.get("/:id", async (req,res)=>{
     try{
-      if (!req.session.userId){
-        return res.redirect("/auth/sign-in");
-      } else {
- const pet= await Pet.findById(req.params.id).populate("owner");
+ const pet= await Pet.findById(req.params.id);
  const user= await User.findById(req.session.userId);
  res.render("pets/show.ejs", {pet, user, pageTitle: `${pet.name}`})
-    }
   }catch(err){
         console.log(err);
         res.redirect("/pets")

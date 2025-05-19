@@ -18,13 +18,14 @@
     <%if (pet.about){%>
 <p class="pet-about">About <%=pet.name%>: <br><%=pet.about%></p>
 <%}%>
-
-<%if (pet.owner===user._id){%>
-    <form action="/pets/<%=pet._id%>?_method=DELETE" method="POST">
-        <a href="/pets/<%=pet._id%>/edit">Edit details</a>
+<%if (user && pet.owner.toString()===user._id.toString()){%>
+    <form action="/pets/<%=pet._id%>/edit">
+            <button type="submit">Edit details</button>
+            </form>
+    <form action="/pets/<%=pet._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this pet?');">
             <button type="submit">Remove pet</button>
         </form>
-        <%}%>
+       <%}%>
     <p><a href="/pets"> Go back</a></p>
  
 <%- include('../partials/footer.ejs') %>
