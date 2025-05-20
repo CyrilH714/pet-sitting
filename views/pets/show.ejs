@@ -26,6 +26,25 @@
             <button type="submit">Remove pet</button>
         </form>
        <%}%>
+       <h2><%=pet.name%>'s discussion board</h2>
+       <% if (user){ %>
+       <% if (pet.comments){ %>
+       <ul>
+        <%pet.comments.forEach((comment)=>{ %>
+            <li><strong><%=comment.author.name%></strong> said: <em><%=comment.message%></em> <small>on <%= comment.datePosted.toDateString()%></small></li>
+
+            <% })} else{ %>
+                <p>No comments yet.</p>
+                <%}%>
+       </ul>
+       
+       <form action="/pets/<%=pet._id%>/comments" method="POST">
+        <textarea name="message" rows="4" required placeholder="Leave a comment..."></textarea>
+        <button type="submit">Leave comment</button>
+       </form>
+       <%} else{ %>
+        <p>To leave a comment, please <a href="/auth/sign-in">Sign in</a> first.</p>
+        <%}%>
     <p><a href="/pets"> Go back</a></p>
  
 <%- include('../partials/footer.ejs') %>

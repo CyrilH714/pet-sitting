@@ -5,16 +5,26 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const commentSchema= new Schema ({})
-const petSchema = new Schema({
-  
-  about:{
+const commentSchema= new Schema ({
+  message:{
     type:String,
-    required:true
+    required:true,
   },
+  author:{type:mongoose.Schema.Types.ObjectId, 
+    ref:"User",
+    required:true,
+  },
+  datePosted:{
+    type:Date,
+    default:Date.now,
+  }
+})
+
+const petSchema = new Schema({
 
   name: {
     type: String,
+    required: true,
   },
   category: {
     type:String,
@@ -39,7 +49,7 @@ const petSchema = new Schema({
   },
   profileImg:{
     type:String,
-    required:false,
+    required:true,
   },
   location:{
     type:String,

@@ -43,6 +43,19 @@ router.post("/", async(req,res)=>{
     }
 })
 
+// Post comments
+router.post("/:id/comments",async (req,res)=>{
+  try{
+    const pet= await Pet.findById(req.params.id);
+    pet.comments.push({message:req.body.message, author:req.session.userId});
+    await pet.save();
+    res.redirect(`/pets/${pet._id}`)
+  } catch(err){
+    console.log(err);
+    res.redirect(`/pets/${req.params.id}`)
+  }
+})
+
 // delete
 router.delete("/:id", async (req,res)=>{
     try{
@@ -94,7 +107,7 @@ router.put("/:id", async (req,res)=>{
 // show
 router.get("/:id", async (req,res)=>{
     try{
- const pet= await Pet.findById(req.params.id);
+ const pet= await Pet.findById(req.params.id).populate("comments.author");
  const user= await User.findById(req.session.userId);
  res.render("pets/show.ejs", {pet, user, pageTitle: `${pet.name}`})
   }catch(err){
