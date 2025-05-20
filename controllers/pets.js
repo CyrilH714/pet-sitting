@@ -14,8 +14,11 @@ const ensureLoggedIn = require('../middleware/ensure-logged-in');
 // GET /pets
 // Example of a non-protected route
 router.get('/', async (req, res) => {
-  const pets = await Pet.find();
-  try {res.render("pets/index.ejs", {pets, pageTitle:"View pets"})
+  try {const query={};
+  if(req.query.category){query.category=req.query.category};
+  if(req.query.specialCareNeeded==="true"){query.specialCareNeeded=true}
+  const pets=await Pet.find(query)  
+    res.render("pets/index.ejs", {pets,category:req.query.category||"",specialCareNeeded:req.query.specialCareNeeded==="true", pageTitle:"View pets"})
      } catch (err){
         console.log(err);
         res.redirect("/")
