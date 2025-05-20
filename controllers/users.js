@@ -37,9 +37,9 @@ router.get('/:id', async (req, res) => {
     let comments = [];
     const user=await User.findById(req.params.id);
     const pets = await Pet.find({owner:user._id});
-    const applicationsSent=await Application.find({applicant:user._id}).populate("pet");
+    const applicationsSent=await Application.find({applicant:user._id}).populate("pet").populate("owner");
     const petIds = await Pet.find({ owner: user._id }).select("_id");
-    const applicationsReceived= await Application.find({pet:{$in:petIds}}).populate("applicant");
+    const applicationsReceived= await Application.find({pet:{$in:petIds}}).populate("applicant").populate("pet");
     pets.forEach((pet) =>{
         pet.comments.forEach((comment)=>{
             if(comment.author.toString() === user._id.toString()){

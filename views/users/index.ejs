@@ -11,8 +11,16 @@
             <button type="submit">Edit bio</button>
             </form>
             <%}%>
-<h2>Pet listings</h2>
-<!-- show listed pets of user -->
+<h2>Your pet listings</h2>
+<% if(pets && pets.length){ %>
+<%pets.forEach((pet)=>{%>
+    <%if(pet.owner.toString()===user._id.toString()){%>
+<img alt="image of <%=pet.name%>" class="pet-pic" src="<%=pet.profileImg%>">
+<p class="pet-name"><%=pet.name%></p>
+<%}})} else{%>
+    <p>No pets currently listed</p>
+    <%}%>
+
 
 <%if(loggedInId&& loggedInId.toString()===user._id.toString()){%>
 <h2> Pet-sitting applications received</h2>
