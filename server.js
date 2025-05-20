@@ -50,7 +50,7 @@ const passUserToView=require('./middleware/add-user-to-req-and-locals.js');
 // GET / (root/default) -> Home Page
 app.get('/', (req, res) => {
   try{
-    res.redirect("/pets", {user: req.session.user, pageTitle: "View pets"});
+    res.redirect("/pets");
   }catch(err){
     console.log(err);
   res.render('home.ejs', {

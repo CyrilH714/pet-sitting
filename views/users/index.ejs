@@ -1,2 +1,56 @@
 <%- include('../partials/header.ejs') %>
+
+<h1><%=user.name%>'s profile</h1>
+<img src="<%=user.profileImg%>" alt="<%=user.name%>'s profile image">
+<h2>Your information</h2>
+<p><strong>Contact email: </strong> <%=user.email%></p>
+<p><strong>Location: </strong> <%=user.location%></p>
+<p><strong>About: </strong> <%=user.about%></p>
+
+<h2>Your pet listings</h2>
+
+
+<%if(loggedInId&& loggedInId.toString()===user._id.toString()){%>
+<h2> Applications received</h2>
+<ul>
+    <% applicationsReceived.forEach((application)=>{%>
+<li>
+<p><strong>Pet: </strong> <%=application.pet.name%></p>
+       <p><strong>Status: </strong> <%=application.status%></p>
+   <form action="/applications/<%=application._id%>?_method=PUT" method="POST">
+    <select name="status">
+        <option value="pending" <%=application.status==='pending'?"selected":""%>> Pending </option>
+        <option value="accepted" <%=application.status==='pending'?"selected":""%>> Accepted </option>
+        <option value="declined" <%=application.status==='pending'?"selected":""%>> Declined </option>
+    </select>
+    <button type="submit">Send response</button>
+    </form>
+     </li>
+     <% })%>
+</ul>
+<h2>Applications sent</h2>
+<ul>
+<% applicationsSent.forEach((application)=>{%>   
+    <li>
+       <p><strong>Pet: </strong> <%=application.pet.name%></p>
+       <p><strong>Status: </strong> 
+       <% if(application.status==="accepted"){%>
+        Application accepted! 🎈 <br> <a href="/users/<%=application.owner._id%>"> View <%=application.owner.name%>'s details here</a></p>
+        <%}%>
+    </li>
+
+<% })%>
+</ul>
+
+ <h2>Your comments</h2>
+<ul>
+<% comments.forEach((comment)=>{%>   
+    <li>
+       <p><strong>Pet: </strong> <%=comment.pet.name%></p>
+       <p><strong>message: </strong> <%=comment.message%></p>
+    </li>
+
+<% })%>
+</ul>
+<%}%>
 <%- include('../partials/footer.ejs') %>

@@ -1,0 +1,16 @@
+<%- include("../partials/header")%>
+<h1> Apply to pet-sit <%=pet.name%></h1>
+
+<form action="/applications/<%=pet._id%>" method="POST">
+    <label for="hasExperience">Are you experienced in caring for this type of pet?</label>
+<input type="checkbox" name="hasExperience" id="hasExperience">
+<label for="distance">How far away are you from <%=pet.location%>? please anser in km:</label>
+<input type="distance" name="distance" id="distance">
+<label for="message">Please leave details about yourself, your motivations/qualifications, and any other useful information:</label>
+<textarea name="message" id="message" rows="6"></textarea>
+<button type="submit">Send application to owner</button>
+</form>
+<%- include("../partials/footer")%>
+
+<!-- upon submission. send message saying sent and view outcome in profile -->
+<!-- calculate distance from location input? -->

@@ -17,7 +17,11 @@ const commentSchema= new Schema ({
   datePosted:{
     type:Date,
     default:Date.now,
-  }
+  },
+  edited:{
+    type:Boolean,
+    default:false,
+  },
 })
 
 const petSchema = new Schema({

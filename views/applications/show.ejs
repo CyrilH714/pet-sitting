@@ -1,0 +1,27 @@
+<%- include("../partials/header")%>
+<h1> Review <%=application.applicant.name%>'s application to pet-sit <%=pet.name%></h1>
+
+
+<p><strong>Applicant:</strong> <%= application.applicant.name %></p>
+<p><strong>Status:</strong> <%= application.status %></p>
+<p><strong>Distance:</strong> <%= application.distance %>km away</p>
+<p>This applicant <strong>
+    <% if(application.hasExperience===true){
+        has
+   %< } else{ %>
+       does not have 
+   <% } %>
+    </strong> 
+experience with this animal</p>
+<p><strong>Message:</strong> <%= application.message %></p>
+
+<form action="/applications/<%=application._id%>?_method=PUT" method="POST">
+    <label for="status">accept/decline application;</label>
+<select name="status" id="status">
+    <option value="pending" <%=application.status==="pending"? "selected":"" %>></option>
+        <option value="accepted" <%=application.status==="accepted"? "selected":"" %>></option>
+            <option value="declined" <%=application.status==="declined"? "selected":"" %>></option>
+</select>
+<button type="submit">Send response</button>
+</form>
+<%- include("../partials/footer")%>

@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const Pet= require("../models/pet")
 const Application= require("../models/application")
+const dayjs=require("dayjs");
 // Middleware used to protect routes that need a logged in user
 const ensureLoggedIn = require('../middleware/ensure-logged-in');
 
@@ -52,11 +53,17 @@ router.post("/:id/comments",async (req,res)=>{
     res.redirect(`/pets/${pet._id}`)
   } catch(err){
     console.log(err);
-    res.redirect(`/pets/${req.params.id}`)
+    res.redirect(`/pets/${pet._id}`)
   }
 })
 
-// delete
+// edit comment
+
+// update comment
+
+// delete comment
+
+// delete post
 router.delete("/:id", async (req,res)=>{
     try{
 if (!req.session.userId){
@@ -109,7 +116,7 @@ router.get("/:id", async (req,res)=>{
     try{
  const pet= await Pet.findById(req.params.id).populate("comments.author");
  const user= await User.findById(req.session.userId);
- res.render("pets/show.ejs", {pet, user, pageTitle: `${pet.name}`})
+ res.render("pets/show.ejs", {pet, user, dayjs, pageTitle: `${pet.name}`})
   }catch(err){
         console.log(err);
         res.redirect("/pets")

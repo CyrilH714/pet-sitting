@@ -12,6 +12,7 @@
     <div>
       <% if (user) { %>
         <span>Welcome, <%= user.name %></span>
+        <a href="/users/<%=user._id%>">YOUR PROFILE</a>
         <a href="/pets">VIEW PETS</a>
         <a href="/pets/new">ADD YOUR PET</a>
         <a href="/auth/sign-out">SIGN OUT</a>
