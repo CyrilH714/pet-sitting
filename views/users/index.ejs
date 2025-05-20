@@ -6,12 +6,16 @@
 <p><strong>Contact email: </strong> <%=user.email%></p>
 <p><strong>Location: </strong> <%=user.location%></p>
 <p><strong>About: </strong> <%=user.about%></p>
-
-<h2>Your pet listings</h2>
-
+<%if(loggedInId&& loggedInId.toString()===user._id.toString()){%> 
+<form action="/users/<%=user._id%>/edit">
+            <button type="submit">Edit bio</button>
+            </form>
+            <%}%>
+<h2>Pet listings</h2>
+<!-- show listed pets of user -->
 
 <%if(loggedInId&& loggedInId.toString()===user._id.toString()){%>
-<h2> Applications received</h2>
+<h2> Pet-sitting applications received</h2>
 <ul>
     <% applicationsReceived.forEach((application)=>{%>
 <li>
@@ -23,12 +27,12 @@
         <option value="accepted" <%=application.status==='pending'?"selected":""%>> Accepted </option>
         <option value="declined" <%=application.status==='pending'?"selected":""%>> Declined </option>
     </select>
-    <button type="submit">Send response</button>
+    <button type="submit">Submit response</button>
     </form>
      </li>
      <% })%>
 </ul>
-<h2>Applications sent</h2>
+<h2>Pet-sitting applications sent</h2>
 <ul>
 <% applicationsSent.forEach((application)=>{%>   
     <li>
@@ -52,5 +56,6 @@
 
 <% })%>
 </ul>
+
 <%}%>
 <%- include('../partials/footer.ejs') %>

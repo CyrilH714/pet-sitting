@@ -1,0 +1,16 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Edit User bio</h1> 
+
+<form action="/users/<%=user._id%>?_method=PUT" method="POST">
+ <label for="profileImg">Profile image URL</label>
+  <input value="<%=user.profileImg || ""%>" type="text" name="profileImg" id="profileImg" />
+  <label for="location">Location:</label>
+  <input value="<%=user.location || ""%>" type="text" name="location" id="location" />
+  <label for="about">Bio description:</label>
+  <textarea name="about" id="about" rows="5" ><%=user.about ||""%></textarea>
+  <button type="submit">Submit changes</button>
+</form>
+<a href="/users/<%= user._id %>">Go back</a>
+            
+<%- include('../partials/footer.ejs') %>

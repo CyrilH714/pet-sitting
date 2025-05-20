@@ -6,6 +6,31 @@ const Application= require("../models/application")
 const ensureLoggedIn = require('../middleware/ensure-logged-in');
 router.use(ensureLoggedIn);
 
+router.get("/:id/edit", async (req,res)=>{
+    try{
+        const user=await User.findById(req.params.id);
+        if (!user||req.session.userId!==user._id.toString()){
+            return res.redirect('/pets')
+        }
+        res.render("users/edit.ejs",{user,pageTitle:`Edit ${user.name}'s profile`})
+    }catch(err){
+        console.log(err);
+        res.redirect("/pets")
+    }
+})
+
+router.put('/:id',async (req,res)=>{
+    try{
+        if (req.session.userId1==req.params.id){
+            return res.redirect("/pets");
+        }
+        await User.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect(`/users/${req.params.id}`);
+    }catch(err){
+        console.log(err);
+        res.redirect("/pets");
+    }
+})
 
 router.get('/:id', async (req, res) => {
   try {
