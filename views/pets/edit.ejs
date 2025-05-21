@@ -1,5 +1,5 @@
 <%- include('../partials/header.ejs') %>
-<%- include('../partials/header.ejs') %>
+
 <h1>Edit pet information</h1> 
 <form action="/pets/<%=pet._id%>?_method=PUT" method="POST">
     <label for="name">pet name:</label>
@@ -38,7 +38,7 @@
         <label for="specialCareNeeded"> Special requirements?</label>
     <input type="checkbox" name="specialCareNeeded" id="specialCareNeeded"
     <% if (pet.specialCareNeeded) { %> checked <% } %> /><br>
-<p>Please provide a description of your pet, including any special requirements or useful information</textarea>    Please provide a description of your pet, including any special requirements or useful information</p>
+<p>Please provide a description of your pet, including any special requirements or useful information</textarea>   </p>
       <textarea id="about" name="about" required rows="4"> <%=pet.about%></textarea> 
       <button type="submit">Save changes</button>
       </form>

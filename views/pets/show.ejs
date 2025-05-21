@@ -1,7 +1,9 @@
 
  <%- include('../partials/header.ejs') %>
+ <div class="show-container">
     <h1><%=pet.name%></h1>
-    <img alt="image of <%=pet.name%>" class="pet-pic" src="<%=pet.profileImg%>">
+    <div class="pet-details">
+    <img alt="image of <%=pet.name%>" class="pet-img" src="<%=pet.profileImg%>">
     <p class="pet-species"><%=pet.species%></p>
     <% if(pet.breed){ %>
     <p> <%=pet.breed %></p>
@@ -13,16 +15,16 @@
 <p class="pet-age"><%=pet.age%> years old</p>
 <%}%>
      <% if(pet.specialCareNeeded){ %>
-    <p> Special care needed! ⭐️</p>
+    <p class="care-needed"> Special care needed! ⭐️</p>
     <% } %>
     <%if (pet.about){%>
-<p class="pet-about">About <%=pet.name%>: <br><%=pet.about%></p>
+<p class="about">About <%=pet.name%>: <br><%=pet.about%></p>
 <%}%>
 <% if (user) {%>
-    <a href="/applications/<%=pet._id%>">Apply to pet-sit</a>
+    <a href="/applications/<%=pet._id%>"><em>Apply to pet-sit</em></a>
           
             <%} else {%>
-<p>To apply to pet-sit <%=pet.name%>, please <a href="/login">sign in first.</a></p>
+<p><em>To apply to pet-sit <%=pet.name%>, please <a href="/login">sign in first.</em></a></p>
                  <%}%>
 <%if (user && pet.owner.toString()===user._id.toString()){%>
     <form action="/pets/<%=pet._id%>/edit">
@@ -32,10 +34,12 @@
             <button type="submit">Remove pet</button>
         </form>
     <%}%>
+    </div>
+    <div class="discussion-board">
        <h2><%=pet.name%>'s discussion board</h2>
        <% if (user){ %>
   <% if (pet.comments && pet.comments.length > 0) { %>
-  <ul>
+  <ul class="comments-list">
     <% pet.comments.forEach(comment => { %>
       <li>
         <strong><%= comment.author?.name || "Anonymous" %></strong> said:
@@ -47,17 +51,17 @@
     <% }) %>
   </ul>
 <% } else { %>
-  <p>No comments yet.</p>
+  <p><em>No comments yet.</em></p>
 <% } %>
-  <form action="/pets/<%= pet._id %>/comments" method="POST">
+  <form action="/pets/<%= pet._id %>/comments" method="POST" class="comment-form">
     <textarea name="message" rows="4" required placeholder="Leave a comment..."></textarea>
     <button type="submit">Post</button>
   </form>
 <% } else { %>
-  <p><a href="/login">Sign in</a> to view or leave comments.</p>
+  <p><a href="/login"><em>Sign in</a> to view or leave comments.</em></p>
 <% } %>
-
+    </div>
     <p><a href="/pets"> Go back</a></p>
-    
+    </div>
  
 <%- include('../partials/footer.ejs') %>

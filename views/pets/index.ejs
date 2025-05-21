@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
 <div class="pets-index"></div>
 <h1 class="page-title">Available pets</h1>
-
+<div class="wrapper">
 <div class="filter-section">
 <form method="GET" action="/pets">
     <h2>Filter pets</h2>
@@ -27,25 +27,28 @@
  </form>
  </div>
 
- <div class="pet-grid">
 
-<% if(pets && pets.length){ %>
-<%pets.forEach((pet)=>{%>
-    <div class="pet-card">
-<img alt="image of <%=pet.name%>" class="pet-pic" src="<%=pet.profileImg%>">
-<p class="pet-name"><%=pet.name%></p>
-<p class="pet-species"><%=pet.species%></p>
-<%if (pet.breed){%>
-<p class="pet-breed"><%=pet.breed%></p>
-<%}%>
-<p class="pet-location"><%=pet.location%></p>
-<a href="/pets/<%=pet._id%>">View more</a> 
+<div class="pet-grid">
+  <% if (pets && pets.length) { %>
+    <% pets.forEach(pet => { %>
+      <a href="/pets/<%= pet._id %>" class="pet-card-link">
+        <div class="pet-card">
+          <img alt="image of <%= pet.name %>" class="pet-pic" src="<%= pet.profileImg %>">
+          <p class="pet-name"><strong><%= pet.name %></strong></p>
+          <% if (pet.breed) { %>
+            <p class="pet-breed"><em><%= pet.breed %></em></p>
+          <% } else{ %>
+            <p class="pet-species"><em><%= pet.category %></em></p
+                <% } %>
+          <p class="pet-location"><%= pet.location %></p>
+        </div>
+      </a>
+    <% }) %>
+  <% } else { %>
+    <p>No pets available!</p>
+  <% } %>
 </div>
-<% } )} else { %>
-<p> No pets available!</p>
-    <% } %>
-</div>
-<!-- make whole div clickable link -->
 
+</div>
 </div>
  <%- include('../partials/footer.ejs') %>
