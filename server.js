@@ -40,6 +40,11 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use((req, res, next) => {
+  res.locals.currentPath = req.originalUrl;
+  next();
+});
+
 // middleware
 const ensureLoggedIn=require("./middleware/ensure-logged-in.js");
 const passUserToView=require('./middleware/add-user-to-req-and-locals.js');
