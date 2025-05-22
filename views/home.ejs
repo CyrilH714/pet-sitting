@@ -1,13 +1,17 @@
 <%- include('./partials/header.ejs') %>
 
-<h1>Welcome to Pet-sitters</h1>
+<h1>Welcome to PetSitConnect</h1>
 
 <a href="/auth/sign-in">I want to pet-sit</a>
 <a href="/auth/sign-in">I want a pet-sitter</a>
 <a href="/pets/index">View pets</a>
 
-
+<div class="dog-peek">
+  <img src="/images/Dog-peeking.png" alt="Dog peeking">
+</div>
 <%- include('./partials/footer.ejs') %>
 
 <!-- link to b conditional on whether logged in or not. logged in bypasses sign-in
  need to remember users/not log them out automatically-->
+ <!-- remove apply to pet sit link if user=owner! make it a button too -->
+  <!-- make about not in italics -->
