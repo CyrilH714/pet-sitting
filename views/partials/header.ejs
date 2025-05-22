@@ -9,19 +9,32 @@
 </head>
 <body>
   <nav>
-    <a href="/">🏠</a>
-    <div>
+
+    
       <% if (user) { %>
-        <span>Welcome, <%= user.name %></span>
+       <aside> <span>Welcome, <%= user.name %></span>
         <a href="/users/<%=user._id%>">YOUR PROFILE</a>
-        <a href="/pets">VIEW PETS</a>
+         <% if (currentPath !== '/pets') { %>
+  <a href="/pets">VIEW PETS</a>
+<% } %>
+        </aside>
+        <div>
+  
         <a href="/pets/new">ADD YOUR PET</a>
         <a href="/auth/sign-out">SIGN OUT</a>
-        
+        </div>
       <% } else { %>
-        <a href="/pets">VIEW PETS</a>
+        <aside>
+         <a href="/">🏠</a>
+         <% if (currentPath !== '/pets') { %>
+  <a href="/pets">VIEW PETS</a>
+<% } %>
+
+        </aside>
+        <div>
         <a href="/auth/sign-up">SIGN UP</a>
         <a href="/auth/sign-in">SIGN IN</a>
+        </div>
       <% } %>
     </div>
   </nav>
