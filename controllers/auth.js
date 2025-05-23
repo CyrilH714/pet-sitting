@@ -18,6 +18,12 @@ router.post('/sign-up', async (req, res) => {
   try {
     if (req.body.password !== req.body.confirmPassword) throw new Error('Passwords Do Not Match');
     req.body.password = bcrypt.hashSync(req.body.password, SALT_ROUNDS);
+
+    if (!req.body.profileImg || req.body.profileImg.trim() === '') {
+      const seed = req.body.name || 'default';
+      req.body.profileImg = `https://api.dicebear.com/8.x/thumbs/svg?seed=${encodeURIComponent(seed)}`;
+    }
+
     const user = await User.create(req.body);
     req.session.userId = user._id;
     res.redirect('/pets/index')

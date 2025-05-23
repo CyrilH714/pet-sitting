@@ -435,3 +435,101 @@ textarea{
   padding: 1rem 2rem;
   font-size: 1rem;
 }
+
+.profile-page {
+  max-width: 900px;
+  margin: 5vmin auto;
+  padding: 3vmin;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+
+.info-text p {
+  margin: 0.5rem 0;
+}
+
+.section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #ddd;
+}
+
+.pet-listings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.pet-card {
+  text-align: center;
+}
+
+.pet-thumb {
+  width: 120px;
+  height: 120px;
+  border-radius: 1rem;
+  object-fit: scale-down;
+  border: 1px solid #ccc;
+}
+
+.application-list select {
+  margin-top: 0.5rem;
+}
+
+.application-list li {
+  margin-bottom: 1.5rem;
+}
+
+.profile-img {
+  width: 30vmin;
+  height: auto;
+  border-radius: 30%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  display: block;
+  margin: 0 auto 1rem auto;
+}
+
+
+.center-heading {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+
+.comments-section {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.comments-section li {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+.app-response-form {
+  max-width: 300px;
+  text-align: left;
+  margin-left: 2rem;
+}
+
+.app-response-form select,
+.app-response-form button {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  margin-top: 0.5rem;
+}

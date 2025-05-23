@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') %>
 
-<h1>Edit pet information</h1> 
+<h1 class="center-heading">Edit pet information</h1> 
 <form action="/pets/<%=pet._id%>?_method=PUT" method="POST">
     <label for="name">pet name:</label>
     <input type="text" name="name" id="name" required value="<%=pet.name%>"/>

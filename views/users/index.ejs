@@ -1,8 +1,9 @@
 <%- include('../partials/header.ejs') %>
-
-<h1><%=user.name%>'s profile</h1>
-<img src="<%=user.profileImg%>" alt="<%=user.name%>'s profile image">
-<h2>Your information</h2>
+<div class="profile-page">
+<h1 class="center-heading"><%=user.name%>'s profile</h1>
+<img class="profile-img" src="<%=user.profileImg%>" alt="<%=user.name%>'s profile image">
+<h2 class="center-heading">Your information</h2>
+ <div class="info-text">
 <p><strong>Contact email: </strong> <%=user.email%></p>
 <p><strong>Location: </strong> <%=user.location%></p>
 <p><strong>About: </strong> <%=user.about%></p>
@@ -10,37 +11,57 @@
 <form action="/users/<%=user._id%>/edit">
             <button type="submit">Edit bio</button>
             </form>
+            </div>
             <%}%>
-<h2>Your pet listings</h2>
-<% if(pets && pets.length){ %>
-<%pets.forEach((pet)=>{%>
-    <%if(pet.owner.toString()===user._id.toString()){%>
-<img alt="image of <%=pet.name%>" class="pet-pic" src="<%=pet.profileImg%>">
-<p class="pet-name"><%=pet.name%></p>
-<%}})} else{%>
-    <p>No pets currently listed</p>
-    <%}%>
+            </div>
+            
+ <div class="section">
+<h2>Your Pet Listings</h2>
+<div class="pet-listings">
+  <% let hasPets = false; %>
+  <% pets.forEach(pet => { 
+    if (pet.owner.toString() === user._id.toString()) {
+      hasPets = true; %>
+      <a href="/pets/<%= pet._id %>" class="pet-card-link">
+        <div class="pet-card">
+          <img src="<%= pet.profileImg %>" alt="<%= pet.name %>" class="pet-thumb">
+          <p class="pet-name"><%= pet.name %></p>
+        </div>
+      </a>
+   <% } %>
+    <% }) %>
 
-
-<%if(loggedInId&& loggedInId.toString()===user._id.toString()){%>
-<h2> Pet-sitting applications received</h2>
+    <% if (!hasPets) { %>
+      <p>No pets currently listed</p>
+    <% } %>
+  </div>
+</div>
+ <%if(loggedInId&& loggedInId.toString()===user._id.toString()){%> 
+<div class="section">
+    <h2 class="center-heading"> Pet-sitting applications received</h2>
 <ul>
     <% applicationsReceived.forEach((application)=>{%>
 <li>
 <p><strong>Pet: </strong> <%=application.pet.name%></p>
-       <p><strong>Status: </strong> <%=application.status%></p>
+       <p><strong>Response status: </strong> <%=application.status%></p>
+<p><strong>Change response status: </strong> 
+    <div class="app-response-form">
    <form action="/applications/<%=application._id%>?_method=PUT" method="POST">
     <select name="status">
+        
+        <option value="accepted" <%=application.status==='pending'?"selected":""%>> Accept </option>
+        <option value="declined" <%=application.status==='pending'?"selected":""%>> Decline </option>
         <option value="pending" <%=application.status==='pending'?"selected":""%>> Pending </option>
-        <option value="accepted" <%=application.status==='pending'?"selected":""%>> Accepted </option>
-        <option value="declined" <%=application.status==='pending'?"selected":""%>> Declined </option>
     </select>
     <button type="submit">Submit response</button>
     </form>
+    </div>
      </li>
      <% })%>
 </ul>
-<h2>Pet-sitting applications sent</h2>
+</div>
+<div class="section">
+<h2 class="center-heading">Pet-sitting applications sent</h2>
 <ul>
 <% applicationsSent.forEach((application)=>{%>   
     <li>
@@ -53,17 +74,16 @@
 
 <% })%>
 </ul>
-
- <h2>Your comments</h2>
-<ul>
-<% comments.forEach((comment)=>{%>   
-    <li>
-       <p><strong>Pet: </strong> <%=comment.pet.name%></p>
-       <p><strong>message: </strong> <%=comment.message%></p>
-    </li>
-
-<% })%>
-</ul>
-
-<%}%>
+</div>
+<div class="section">
+  <h2 class="center-heading">Your Comments</h2>
+  <ul class="comments-section">
+    <% comments.forEach(comment => { %>
+      <li>
+        <p><strong>Pet:</strong> <%= comment.pet.name %></p>
+        <p><strong>Message:</strong> <%= comment.message %></p>
+      </li>
+    <% }) }%>
+  </ul>
+</div>
 <%- include('../partials/footer.ejs') %>

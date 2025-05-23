@@ -1,10 +1,10 @@
 <%- include('../partials/header.ejs') %>
 
-<h1>Edit User bio</h1> 
+<h1 class="center-heading">Edit User bio</h1> 
 
 <form action="/users/<%=user._id%>?_method=PUT" method="POST">
- <label for="profileImg">Profile image URL</label>
-  <input value="<%=user.profileImg || ""%>" type="text" name="profileImg" id="profileImg" />
+ <label for="profileImg">Profile image URL (optional) </label>
+  <input value="<%=user.profileImg || '' %>" type="text" name="profileImg" id="profileImg" placeholder="Leave blank to use a default avatar"/>
   <label for="location">Location:</label>
   <input value="<%=user.location || ""%>" type="text" name="location" id="location" />
   <label for="about">Bio description:</label>

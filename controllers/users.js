@@ -21,10 +21,16 @@ router.get("/:id/edit", async (req,res)=>{
 
 router.put('/:id',async (req,res)=>{
     try{
-        if (req.session.userId1==req.params.id){
+        if (req.session.userId!==req.params.id){
             return res.redirect("/pets");
         }
-        await User.findByIdAndUpdate(req.params.id, req.body);
+        const updateData = { ...req.body };
+if (!updateData.profileImg || updateData.profileImg.trim() === '') {
+  const user = await User.findById(req.params.id);
+  const seed = user.name || 'default';
+  updateData.profileImg = `https://api.dicebear.com/8.x/thumbs/svg?seed=${encodeURIComponent(seed)}`;
+}
+await User.findByIdAndUpdate(req.params.id, updateData);
         res.redirect(`/users/${req.params.id}`);
     }catch(err){
         console.log(err);

@@ -7,9 +7,9 @@ PetSitConnect is an app that helps pet owners connect with the ideal pet sitter,
 ## 🐾 Screenshots
 
 
-![Home Page](images/pet-sit-connect-home.png)
-![View Pets](images/petsindex.png)
-![User Profile](images/xxxxxx.png)
+![Home Page](/public/images/pet-sit-connect-home.png)
+![View Pets](/public/images/petsindex.png)
+![User Profile](/public/images/xxxxxx.png)
 ---
 
 ## 🚀 How to Use the App
@@ -24,30 +24,30 @@ PetSitConnect is an app that helps pet owners connect with the ideal pet sitter,
 
 2. **Browse Listings**  
    - Visit the homepage to see all available pets.
-   - Use filters (e.g., category, special care) to narrow your search.
+   - Use filters to narrow your search based on the pet category or whether special care is needed.
 
 3. **View Pet Profiles**  
-   - Click on a pet to view details.
+   - Click on a pet to view their details.
    - If signed in, you can leave a comment or apply using the **Apply to pet-sit** button.
 
 4. **Create a Listing**  
-   - Click the link labeled **Give pet-sitting a try?** to add a new pet.
+   - Click the link labelled **Ad your pet** to submit a pet for pet-siting.
 
 5. **Manage Your Profile**  
    - Visit your profile to:
      - Edit your bio
      - View pets you've listed
      - See your submitted applications and their statuses
-     - Respond to applications from others
+     - Respond to applications for pet-sitting from others
 
 ---
 
-## 🔮 Next Steps
+## Next Steps
 
-- Add in-app messaging between owners and sitters
-- Implement calendar availability per pet
+- Improve messaging between owners and sitters after successful application
+- Implement more detailed date requirements for pet sitting, e.g. calendar availability for pet
 - Enable image uploads from files as well as links
-- Auto-calculate distance between pet and sitter based on location
+- Auto-calculate distances between pet and sitter based on location
 
 ---
 
