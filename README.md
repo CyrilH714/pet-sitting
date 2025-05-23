@@ -48,8 +48,19 @@ PetSitConnect is an app that helps pet owners connect with the ideal pet sitter,
 - Improve messaging between owners and sitters after successful application
 - Implement more detailed date requirements for pet sitting, e.g. calendar availability for pet
 - Enable image uploads from files as well as links
-- Auto-calculate distances between pet and sitter based on location
+- Auto-calculate distances between pet and sitter based on location, add filter parameter based on distance
 
 ---
+
+## Technologies used
+- NodeJS
+- JavaScript
+- HTML
+- CSS
+- DiceBear 
+
+---
+
 [Try the app!](https://pet-sit-connect-6ac69e50f72e.herokuapp.com/)
+
 © 2025 Cyril Johan Haller
