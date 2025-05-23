@@ -9,7 +9,7 @@ PetSitConnect is an app that helps pet owners connect with the ideal pet sitter,
 
 ![Home Page](/public/images/pet-sit-connect-home.png)
 ![View Pets](/public/images/petsindex.png)
-![User Profile](/public/images/xxxxxx.png)
+![User Profile](/public/images/userprofile.png)
 ---
 
 ## 🚀 How to Use the App
