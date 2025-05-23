@@ -9,8 +9,11 @@
   <input value="<%=user.location || ""%>" type="text" name="location" id="location" />
   <label for="about">Bio description:</label>
   <textarea name="about" id="about" rows="5" ><%=user.about ||""%></textarea>
-  <button type="submit">Submit changes</button>
+  <button class="submit-button" type="submit">Submit changes</button>
 </form>
-<a href="/users/<%= user._id %>">Go back</a>
+
+<form action="/users/<%= user._id %>" method="POST">
+<button id="back-button" type="submit">Go back</button>
+</form>
             
 <%- include('../partials/footer.ejs') %>

@@ -21,8 +21,11 @@
 <p class="about">About <%=pet.name%>: <br><%=pet.about%></p>
 <%}%>
 <% if (user) {%>
-    <a href="/applications/<%=pet._id%>"><em>Apply to pet-sit</em></a>
-          
+  <%if (pet.owner.toString()!==user._id.toString()){%>
+       <form action="/applications/<%=pet._id%>" class="apply-button">
+            <button type="submit">Apply to pet-sit</button>
+            </form> 
+          <%}%>
             <%} else {%>
 <p><em>To apply to pet-sit <%=pet.name%>, please <a href="/login">sign in first.</em></a></p>
                  <%}%>

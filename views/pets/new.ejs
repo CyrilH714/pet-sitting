@@ -1,9 +1,12 @@
 <%- include('../partials/header.ejs') %>
 <h1>Submit your pet</h1> 
 <form action="/pets" method="POST">
-    <label for="name">pet name:</label>
+    <div class="form-row">
+    <label for="name">Pet name:</label>
     <input type="text" name="name" id="name" required/>
-    <label for="category">Which category does your pet belong to?</label>
+    </div>
+    <div class="form-row">
+    <label for="category">Pet category:</label>
      <select name="category" id="category" required>
 
         <option name="Dog" id="Dog" value="Dog" <%= pet.category === "Dog" ? "selected" : "" %>>Dog</option>
@@ -18,26 +21,37 @@
         <option name="Insect/Arachnid" id="Insect/Arachnid"value="Insect/Arachnid" <%= pet.category === "Insect/Arachnid" ? "selected" : "" %>>Insect/Arachnid</option>
         <option name="Other" id="Other"value="Other" <%= pet.category === "Other" ? "selected" : "" %>>Other</option>
         </select>
-
-     <label for="breed">breed:</label>
+        </div>
+<div class="form-row">
+     <label for="breed">Pet breed (optional):</label>
      <input type="text" name="breed" id="breed"/>
-
-     <label for="age">age:</label>
+  </div>
+  <div class="form-row">
+     <label for="age">Pet age:</label>
      <input type="number" name="age" id="age"/>
-
+  </div>
+  <div class="form-row">
      <label for="profileImg">Image URL of your pet:</label>
      <input type="text" name="profileImg" id="profileImg"/>
-
-     <label for="location">location:</label>
+  </div>
+  <div class="form-row">
+     <label for="location">Your location:</label>
      <input type="text" name="location" id="location"/>
-
+  </div>
+  <div class="form-row">
      <label for="date">Date pet-sitter needed:</label>
      <input type="date" name="date" id="date"/>
-
+  </div>
+  <div class="checkbox-row">
+      <label for="specialCareNeeded"> Special requirements?</label>
     <input type="checkbox" name="specialCareNeeded" id="specialCareNeeded">
-    <label for="specialCareNeeded"> Special requirements?</label><br>
-<p>Please provide a description of your pet, including any special requirements or useful information</textarea>    Please provide a description of your pet, including any special requirements or useful information</p>
+   </div>
+<div class="textbox">
+    <label for="about">Please provide a description of your pet, including details of any special requirements or useful information:</label>  
       <textarea id="about" name="about" required rows="4"></textarea> 
-      <button type="submit">Submit pet</button>
-      </form>
+     
+      <button id ="submit-pet" type="submit">Submit pet</button>
+    </div>  
+    </form>
+      
 <%- include('../partials/footer.ejs') %>

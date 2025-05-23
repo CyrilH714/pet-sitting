@@ -1,15 +1,24 @@
 <%- include("../partials/header")%>
-<h1> Apply to pet-sit <%=pet.name%></h1>
+<div id="application-page"></div>
+<h1 id="application-title"> Apply to pet-sit <%=pet.name%></h1>
 
-<form action="/applications/<%=pet._id%>" method="POST">
+<form action="/applications/<%=pet._id%>" method="POST" id="application-form">
+      <div class="checkbox-row">
     <label for="hasExperience">Are you experienced in caring for this type of pet?</label>
 <input type="checkbox" name="hasExperience" id="hasExperience">
-<label for="distance">How far away are you from <%=pet.location%>? please anser in km:</label>
+</div>
+ 
+<label for="distance">How far away are you from <%=pet.location%>? please answer in km:</label>
+ <div class="form-row">
 <input type="distance" name="distance" id="distance">
-<label for="message">Please leave details about yourself, your motivations/qualifications, and any other useful information:</label>
+</div>
+  <div class="textbox">
+<label for="message">Please leave details about yourself, your motivations/qualifications, and any other useful information:</label><br>
 <textarea name="message" id="message" rows="6"></textarea>
+</div>
 <button type="submit">Send application to owner</button>
 </form>
+</div>
 <%- include("../partials/footer")%>
 
 <!-- upon submission. send message saying sent and view outcome in profile -->

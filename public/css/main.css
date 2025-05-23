@@ -9,19 +9,45 @@ body {
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fdfaf6;
+  color: #5c5c5c;
 }
 
 nav,
 footer {
-  background-color: #a3cfa3;
+  background-color: #a2b59f;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2vmin;
   font-size: 2vh;
-  color: lightslategray;
+  text-align: center;
+
 }
 
+a {
+  color: #d16f5b;
+  text-decoration: none;
+}
+
+
+
+button {
+  background-color: #d16f5b;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #b95645;
+}
 nav a {
   text-decoration: none;
   color: slategray;
@@ -49,8 +75,8 @@ main {
 }
 
 form {
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
+  flex-direction: column;
   gap: 2vmin;
 }
 
@@ -68,6 +94,7 @@ select {
 
 form button[type='submit'] {
   grid-column: span 2;
+  margin-top: 0.1rem;
 }
 
 button:hover {
@@ -113,7 +140,7 @@ width: 220px;
   gap: 2vmin;
 }
 .pet-card {
-  border: 2px solid green;
+  border: 2px solid #ccc;
   border-radius: 1rem;
   padding: 1rem;
   background-color: #f8fff8;
@@ -133,7 +160,7 @@ width: 220px;
 }
 .page-title{
   margin:0 0 1.5vmin 0;
-  font-size:6vmin;
+  font-size:8vmin;
   text-align: center;
   padding: 0 0 5vmin 0;
 }
@@ -218,7 +245,7 @@ width: 220px;
 
 .comment-form textarea {
   width: 100%;
-  padding: 1vmin;
+  padding: 0vmin;
   font-size: 1rem;
   border-radius: 0.5rem;
   border: 1px solid #ccc;
@@ -253,4 +280,158 @@ width: 220px;
   max-width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+.welcome-user{
+  color:white;
+ font-size: large;
+ padding:1px 5px 0 0;
+}
+
+.home-title {
+  font-size:10vmin;
+margin-top:-5min;
+  margin-bottom: 0.3rem;
+}
+
+.home-tagline {
+  font-size: 4vmin;
+  color: #7b7b7b;
+  margin-bottom: 2rem;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vmin;
+  text-align: center;
+}
+
+.textbox {
+  width: 100%;
+  margin-bottom: 2rem;
+
+}
+.textbox label{
+ font-size: large;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 0rem;
+  font-size:large;
+}
+
+textarea{
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.application-form input {
+  width: 100%;
+}
+.application-page {
+  max-width: 600px;
+  margin: 5vmin auto;
+  padding: 1vmin;
+  background-color: #f9fff9;
+  border: 1px solid #d0e6d0;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.application-title {
+  text-align: center;
+  font-size: 4vmin;
+  color: #205c20;
+  margin-bottom: 2rem;
+}
+
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.application-form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.application-form input[type="text"],
+.application-form input[type="number"],
+.application-form textarea {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.application-form input[type="checkbox"] {
+  width: auto;
+  margin-left: 0;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0rem;
+  gap: 0rem;
+}
+
+.form-row label {
+  width: 30vmin; /* Adjust to your needs */
+  font-weight: bold;
+  font-size: large;
+
+}
+
+.form-row input,
+.form-row textarea,
+.form-row select {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.checkbox-row label {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #d16f5b; 
+}
+
+#back-button, #submit-pet {
+  display: block;
+  margin: 1rem auto; 
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+.submit-button {
+    display: block;
+  margin: auto auto; 
+  padding: 1rem 2rem;
+  font-size: 1rem;
 }

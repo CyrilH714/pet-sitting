@@ -12,7 +12,7 @@
 
     
       <% if (user) { %>
-       <aside> <span>Welcome, <%= user.name %></span>
+       <aside> <span class="welcome-user"><strong>Welcome, <%= user.name %></strong></span>
         <a href="/users/<%=user._id%>">YOUR PROFILE</a>
          <% if (currentPath !== '/pets') { %>
   <a href="/pets">VIEW PETS</a>
