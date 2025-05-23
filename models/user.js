@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// shortcut variable
+
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -33,7 +33,7 @@ const userSchema = new Schema({
     enum:["owner","applicant","both"]
   }
 }, {
-  // Mongoose will maintain a createdAt & updatedAt property
+ 
   timestamps: true
 });
 

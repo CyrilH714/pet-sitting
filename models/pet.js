@@ -1,6 +1,4 @@
-// embed comments in pets, store owner info. userId is objctId of user
-// reference owner user and application
-// owner-objectId of user
+
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
@@ -81,7 +79,7 @@ const petSchema = new Schema({
     }
   
 }, {
-  // Mongoose will maintain a createdAt & updatedAt property
+  
   timestamps: true
 });
 

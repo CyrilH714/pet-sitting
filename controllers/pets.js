@@ -12,7 +12,7 @@ const ensureLoggedIn = require('../middleware/ensure-logged-in');
 
 // index action
 // GET /pets
-// Example of a non-protected route
+
 router.get('/', async (req, res) => {
   try {const query={};
   if(req.query.category){query.category=req.query.category};
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
   });
 
 // GET /pets/new
-// Example of a protected route
+
 router.get('/new', ensureLoggedIn, (req, res) => {
   if (!req.session.userId){
         return res.redirect("/auth/sign-in");
@@ -60,11 +60,6 @@ router.post("/:id/comments",async (req,res)=>{
   }
 })
 
-// edit comment
-
-// update comment
-
-// delete comment
 
 // delete post
 router.delete("/:id", async (req,res)=>{

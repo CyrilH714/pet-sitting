@@ -24,23 +24,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// GET application
-// router.get("/:id", async (req, res) => {
-//   try {
-//    const pet=await Application.findById(req.params.id).populate("pet").populate("owner").populate("applicant");
-//    const userId=req.session.userId 
-//     if (
-//       application.owner._id.toString() !== userId &&
-//       application.applicant._id.toString() !== userId
-//     ) {
-//       return res.redirect("/pets");
-//     }
-//     res.render("/index.ejs",{application,userId,pageTitle:`Application form for ${application.pet.name}`})
-//   } catch (err) {
-//     console.log(err);
-//     res.redirect("/pets");
-//   }
-// });
 
 // POST application
 router.post("/:id", async (req, res) => {

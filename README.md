@@ -51,4 +51,4 @@ PetSitConnect is an app that helps pet owners connect with the ideal pet sitter,
 
 ---
 
-© 2025 PetSitConnect
+© 2025 Cyril Johan Haller
